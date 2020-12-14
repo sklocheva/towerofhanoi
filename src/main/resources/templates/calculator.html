@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tower of Hanoi Calculator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<form action="/calculate" method="get">
+    Number of Disks: <input name="number"/> <br/>
+    <input type="submit" value="Calculate">
+</form>
+<p th:text="'Moves: ' + ${moves}"/>
+</body>
+</html>
