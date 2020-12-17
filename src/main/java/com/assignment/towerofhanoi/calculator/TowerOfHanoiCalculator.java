@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 /**
  * @author Sophia Klocheva
  * on 14/12/2020
+ * <p>
+ * TowerOfHanoiCalculator calculates and returns the set of moves
+ * needed to move all disks from peg A to C.
  */
 @Component
 public class TowerOfHanoiCalculator
@@ -16,6 +19,14 @@ public class TowerOfHanoiCalculator
 
     private StringBuffer setOfMoves;
 
+    /**
+     * Depending on the number of disks, the method
+     * calculates the moves needed for the disks
+     * to be moved from peg A to C.
+     *
+     * @param numberOfDisks
+     * @return the set of moves
+     */
     public String calculateTower(int numberOfDisks)
     {
         setOfMoves = new StringBuffer((int) (Math.pow(2, numberOfDisks) - 1));

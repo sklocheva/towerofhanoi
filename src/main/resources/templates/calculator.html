@@ -1,14 +1,19 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Tower of Hanoi Calculator</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Tower of Hanoi</title>
 </head>
 <body>
-<form action="/calculate" method="get">
-    Number of Disks: <input name="number"/> <br/>
-    <input type="submit" value="Calculate">
+<h1>Tower of Hanoi problem</h1>
+<form method="GET" th:action="@{/calculate}">
+    <label for="disksNumber">Choose disk number: </label>
+    <input type="number" name="disksNumber" id="disksNumber"/><br/>
+    <input type="submit" value="Calculate"/>
 </form>
-<p th:text="'Moves: ' + ${moves}"/>
+<br/>
+<h3>The set of moves needed to transfer the disks from peg A to peg C are: </h3><br/>
+<div class="text"
+     th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(moves),'\n','&lt;br /&gt;'))}"></div>
 </body>
 </html>

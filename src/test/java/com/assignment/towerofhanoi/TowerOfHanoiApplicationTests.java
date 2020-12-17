@@ -6,6 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class TowerOfHanoiApplicationTests {
 
+	/**
+	 * Assert that context loads successfully
+	 */
 	@Test
 	void contextLoads() {
 	}
