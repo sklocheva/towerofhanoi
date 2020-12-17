@@ -7,10 +7,12 @@
 <body>
 <h1>Tower of Hanoi problem</h1>
 <form method="GET" th:action="@{/calculate}">
-    <label for="disksNumber">Choose disk number: </label>
-    <input type="number" name="disksNumber" id="disksNumber"/><br/>
+    <label for="number">Choose disk number: </label>
+    <input type="number" name="number" id="number"/><br/>
     <input type="submit" value="Calculate"/>
 </form>
+<div style="color:red" class="text"
+     th:utext="${error}"/>
 <br/>
 <h3>The set of moves needed to transfer the disks from peg A to peg C are: </h3><br/>
 <div class="text"

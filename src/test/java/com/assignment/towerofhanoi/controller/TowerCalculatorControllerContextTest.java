@@ -50,7 +50,9 @@ class TowerCalculatorControllerContextTest
     @Test
     public void testTowerControllerCalculate() throws Exception
     {
-        this.mockMvc.perform(get("/calculate").param("number", "1"))
+        this.mockMvc.perform(
+                get(ConstantsTestUtils.CALC_URL)
+                        .param(ConstantsTestUtils.CALC_PATH_PARAM, "1"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(ConstantsTestUtils.INIT_TEXT)))

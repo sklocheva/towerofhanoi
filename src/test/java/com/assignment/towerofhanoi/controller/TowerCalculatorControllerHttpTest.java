@@ -26,7 +26,6 @@ public class TowerCalculatorControllerHttpTest
     private TestRestTemplate restTemplate;
 
     private final String URL_BASE = "http://localhost:";
-    private final String URL_CALC = "/calculate?number=";
 
     /**
      * Assert that initial page is returned with correct text.
@@ -38,17 +37,5 @@ public class TowerCalculatorControllerHttpTest
                 URL_BASE + port + "/", String.class)).doesNotContain("dfdfd");
         assertThat(this.restTemplate.getForObject(
                 URL_BASE + port + "/", String.class)).contains(ConstantsTestUtils.INIT_TEXT);
-    }
-
-    /**
-     * Integration test of Tower of Hanoi calculation from calculation page.
-     */
-//    @Test
-    public void testHttpCalculatorController()
-    {
-        System.out.println(URL_BASE + port + URL_CALC + 1);
-        assertThat(this.restTemplate.getForObject(
-                URL_BASE + port + URL_CALC + 1, String.class))
-                .contains(ConstantsTestUtils.CALCULATE_RESULT_1);
     }
 }

@@ -35,6 +35,14 @@ public class TowerOfHanoiCalculator
         return setOfMoves.toString();
     }
 
+    /**
+     * Recursive method for the calculation.
+     *
+     * @param numberOfDisks
+     * @param from
+     * @param mid
+     * @param to
+     */
     private void calculateRecursive(int numberOfDisks, char from, char mid, char to)
     {
         if (numberOfDisks == 1)

@@ -41,10 +41,30 @@ public class TowerCalculatorControllerMockTest
         when(calculator.calculateTower(1))
                 .thenReturn(ConstantsTestUtils.CALCULATE_RESULT_1);
 
-        this.mockMvc.perform(get("/calculate").param("number", "1"))
+        this.mockMvc.perform(
+                get(ConstantsTestUtils.CALC_URL)
+                        .param(ConstantsTestUtils.CALC_PATH_PARAM, "1"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(ConstantsTestUtils.INIT_TEXT)))
                 .andExpect(model().attribute("moves", Matchers.equalTo(ConstantsTestUtils.CALCULATE_RESULT_1)));
+    }
+
+    /**
+     * Test error message for negative number
+     *
+     * @throws Exception
+     */
+
+    @Test
+    public void testTowerControllerNegativeErrorText() throws Exception
+    {
+        this.mockMvc.perform(
+                get(ConstantsTestUtils.CALC_URL)
+                        .param(ConstantsTestUtils.CALC_PATH_PARAM, "-3"))
+                .andDo(print())
+                .andExpect(content().string(containsString(ConstantsTestUtils.INIT_TEXT)))
+                .andExpect(model().attribute("error", Matchers.notNullValue()))
+                .andExpect(model().attribute("move", Matchers.nullValue()));
     }
 }

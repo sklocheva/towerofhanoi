@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  * TowerCalculatorController provides the API
  * for Tower of Hanoi calculation and result visualisation.
  * <p>
- * It loads the home page where
+ * It loads the home page where number of disks can be provided
+ * and upon submission the calculation is returned.
  */
 @Slf4j
 @Controller
@@ -23,6 +24,8 @@ public class TowerCalculatorController
 {
     @Autowired
     private TowerOfHanoiCalculator hanoiCalculator;
+
+    private final String ERROR_MSG = "The disk number is smaller than 0";
 
     /**
      * Loads initial page.
@@ -45,12 +48,13 @@ public class TowerCalculatorController
      * @return
      */
     @GetMapping("/calculate")
-    public String calculateTowerOfHanoi(@ModelAttribute("disksNumber") Integer disk, Model model)
+    public String calculateTowerOfHanoi(@ModelAttribute("number") Integer disk, Model model)
     {
         log.info("*** Received request. Number of disks: " + disk);
         if (disk <= 0)
         {
-            log.warn("DiskNumber smaller than 0");
+            log.warn(ERROR_MSG);
+            model.addAttribute("error", ERROR_MSG);
             return "calculator";
         }
         String resultMoves = hanoiCalculator.calculateTower(disk);

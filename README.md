@@ -31,6 +31,7 @@ disk from first peg (A) to middle peg (B).
 destination peg (C).
 The steps are repeated until there is one disk left.
 
-
-
-
+### Usage
+The program can be accessed from a browser. The url for the
+home page is "/" and for calculate is "/calculate?disksNumber={number}".
+Default port is 8080, dev port is 8082.
